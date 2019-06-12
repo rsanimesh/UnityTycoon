@@ -34,7 +34,8 @@ public class UIStore : MonoBehaviour
     void Start()
     {
         StoreCountText.text = Store.StoreCount.ToString();
-        
+        BuyButtonText.text = "Buy " + Store.GetNextStoreCost().ToString("C2");
+
     }
 
     // Update is called once per frame

@@ -8,7 +8,7 @@ public class store : MonoBehaviour
     // public variables - Define Gameplay
     public float BaseStoreCost; // Starting cost for the store
     public float BaseStoreProfit; // Starting profit that store will give after one run 
-    float StoreTimer = 4f; // Time store will take to run for creating profit
+    public float StoreTimer = 4f; // Time store will take to run for creating profit
     public int StoreCount=0; // No of stores bought
     public bool ManagerUnlock=true; // If true: Automatically restart the store, flase: Run store whenever clicked
     public float StoreMultiplier; // Fraction by which store price will increase every time
