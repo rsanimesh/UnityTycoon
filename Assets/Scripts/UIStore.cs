@@ -34,13 +34,13 @@ public class UIStore : MonoBehaviour
     void Start()
     {
         StoreCountText.text = Store.StoreCount.ToString();
-        BuyButtonText.text = "Buy " + Store.NextStoreCost.ToString("C2");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProgressSlider.value = Store.CurrentTimer / Store.StoreTimer;
+        ProgressSlider.value = Store.GetCurrentTimer() / Store.GetStoreTimer();
         //UpdateUI();
     }
 
@@ -48,7 +48,7 @@ public class UIStore : MonoBehaviour
     {
         // Hide panel until you can afford the store
         CanvasGroup cg = this.transform.GetComponent<CanvasGroup>();
-        if (!Store.StoreUnlocked && !gamemanager.instance.CanBuy(Store.NextStoreCost))
+        if (!Store.StoreUnlocked && !gamemanager.instance.CanBuy(Store.GetNextStoreCost()))
         {
             cg.interactable = false;
             cg.alpha = 0;
@@ -61,21 +61,22 @@ public class UIStore : MonoBehaviour
         }
 
         // Update button if you can afford the store
-        if (gamemanager.instance.CanBuy(Store.NextStoreCost))
+        if (gamemanager.instance.CanBuy(Store.GetNextStoreCost()))
             BuyButton.interactable = true;
         else
             BuyButton.interactable = false;
+        BuyButtonText.text = "Buy " + Store.GetNextStoreCost().ToString("C2");
 
-        
+
     }
 
     public void BuyStoreOnClick()
     {
-        if (!gamemanager.instance.CanBuy(Store.NextStoreCost))
+        if (!gamemanager.instance.CanBuy(Store.GetNextStoreCost()))
             return;
         Store.BuyStore();
-        BuyButtonText.text = "Buy " + Store.NextStoreCost.ToString("C2");
         StoreCountText.text = Store.StoreCount.ToString();
+        UpdateUI();
     }
     public void OnTimerClick()
     {

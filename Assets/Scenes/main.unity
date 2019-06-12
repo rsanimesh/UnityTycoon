@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 641175783}
   - component: {fileID: 641175782}
   - component: {fileID: 641175784}
+  - component: {fileID: 641175785}
   m_Layer: 0
   m_Name: GameManagerObject
   m_TagString: Untagged
@@ -326,6 +327,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentBalanceText: {fileID: 1952496181}
+--- !u!114 &641175785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641175781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ff02b050651864a98a519013671ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameData: {fileID: 4900000, guid: 97de90e7a424b3142a003d4b945daff6, type: 3}
 --- !u!1001 &871994086
 PrefabInstance:
   m_ObjectHideFlags: 0

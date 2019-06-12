@@ -8,14 +8,14 @@ public class store : MonoBehaviour
     // public variables - Define Gameplay
     public float BaseStoreCost; // Starting cost for the store
     public float BaseStoreProfit; // Starting profit that store will give after one run 
-    public float StoreTimer = 4f; // Time store will take to run for creating profit
+    float StoreTimer = 4f; // Time store will take to run for creating profit
     public int StoreCount=0; // No of stores bought
     public bool ManagerUnlock=true; // If true: Automatically restart the store, flase: Run store whenever clicked
     public float StoreMultiplier; // Fraction by which store price will increase every time
     public bool StoreUnlocked=false; // If true: Store is visible to player else not
     public int StoreTimerDivision = 20; // Reduce store timer by half when store count is multiple of 
-    public float NextStoreCost; // Updated value of store cost, calculated using BaseStoreCost, StoreMultiplier, StoreCount
-    public float CurrentTimer = 0;
+    float NextStoreCost; // Updated value of store cost, calculated using BaseStoreCost, StoreMultiplier, StoreCount
+    float CurrentTimer = 0;
     public bool StartTimer; // To start running the store
 
 
@@ -47,8 +47,10 @@ public class store : MonoBehaviour
     { 
         StoreCount = StoreCount + 1;
         Debug.Log(StoreCount);
-        gamemanager.instance.AddToBalance(-NextStoreCost);
+        float Amt = -NextStoreCost;
         NextStoreCost = (BaseStoreCost * Mathf.Pow(StoreMultiplier, StoreCount));
+        gamemanager.instance.AddToBalance(Amt);
+        
         Debug.Log(NextStoreCost);
 
         if  (StoreCount % StoreTimerDivision == 0)
@@ -61,6 +63,20 @@ public class store : MonoBehaviour
     {
         if (!StartTimer && StoreCount > 0)
             StartTimer = true;
+    }
+    
+    public float GetCurrentTimer()
+    {
+        return CurrentTimer;
+    }
+
+    public float GetStoreTimer()
+    {
+        return StoreTimer;
+    }
+    public float GetNextStoreCost()
+    {
+        return NextStoreCost;
     }
 }
  
