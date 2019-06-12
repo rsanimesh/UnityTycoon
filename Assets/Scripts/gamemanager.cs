@@ -5,14 +5,22 @@ using UnityEngine.UI;
 
 public class gamemanager : MonoBehaviour
 {
+    // variables to raise a event 
+    public delegate void UpdateBalance();
+    public static event UpdateBalance OnUpdateBalance;
+
+    public static gamemanager instance;
     float CurrentBalance; 
-    public Text CurrentBalanceText;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         CurrentBalance = 1000; // Initial balance credited to player
-        CurrentBalanceText.text = CurrentBalance.ToString("C2");
+        // check if anyone has suscribed to our event
+        if (OnUpdateBalance != null)
+            OnUpdateBalance(); // if yes raise event  that current balance is changed
+
     }
 
     // Update is called once per frame
@@ -20,12 +28,19 @@ public class gamemanager : MonoBehaviour
     {
         
     }
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     // Add the given amount to current balance and update the CurrentBalanceText
     public void AddToBalance(float amt)
     {
         CurrentBalance += amt;
-        CurrentBalanceText.text = CurrentBalance.ToString("C2");
+        // check if anyone has suscribed to our event
+        if (OnUpdateBalance != null)
+            OnUpdateBalance(); // if yes raise event  that current balance is changed
     }
 
     // Check if player has the input amount in the balance
@@ -35,5 +50,10 @@ public class gamemanager : MonoBehaviour
             return false;
         else
             return true;
+    }
+
+    public float GetCurrentBalance()
+    {
+        return CurrentBalance;
     }
 }
