@@ -120,8 +120,9 @@ public class LoadGameData : MonoBehaviour
         Button ManagerButton = NewManager.transform.Find("UnlockManagerButton").GetComponent<Button>();
         Text ManagerButtonText = ManagerButton.transform.Find("UnlockManagerButtonText").GetComponent<Text>();
         ManagerButtonText.text = "Unlock " + storeobj.ManagerCost.ToString("C2");
-
+        storeobj.UnlockManagerButton = ManagerButton;
         NewManager.transform.SetParent(ManagerPanel.transform);
+
         
 
     }

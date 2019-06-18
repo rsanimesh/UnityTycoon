@@ -70,6 +70,11 @@ public class UIStore : MonoBehaviour
             BuyButton.interactable = false;
         BuyButtonText.text = "Buy " + Store.GetNextStoreCost().ToString("C2");
 
+        // Update manager button if you can afford the store
+        if (gamemanager.instance.CanBuy(Store.ManagerCost))
+            Store.UnlockManagerButton.interactable = true;
+        else
+            Store.UnlockManagerButton.interactable = false;
 
     }
 

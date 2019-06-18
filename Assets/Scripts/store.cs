@@ -19,6 +19,7 @@ public class store : MonoBehaviour
     float CurrentTimer = 0;
     public bool StartTimer; // To start running the store
     public float ManagerCost;
+    public Button UnlockManagerButton;
 
 
     // Start is called before the first frame update
