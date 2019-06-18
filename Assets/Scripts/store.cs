@@ -20,6 +20,7 @@ public class store : MonoBehaviour
     public bool StartTimer; // To start running the store
     public float ManagerCost;
     public Button UnlockManagerButton;
+    public bool ManagerUnlocked;
 
 
     // Start is called before the first frame update
@@ -66,6 +67,14 @@ public class store : MonoBehaviour
     {
         if (!StartTimer && StoreCount > 0)
             StartTimer = true;
+    }
+
+    public void UnlockManager()
+    {
+        if (ManagerUnlocked)
+            return;
+        gamemanager.instance.AddToBalance(-ManagerCost);
+        ManagerUnlocked = true;
     }
 
     public void SetNextStoreCost(float amt)

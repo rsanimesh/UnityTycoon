@@ -43,6 +43,8 @@ public class gamemanager : MonoBehaviour
             OnUpdateBalance(); // if yes raise event  that current balance is changed
     }
 
+    
+
     // Check if player has the input amount in the balance
     public bool CanBuy(float AmtToSpend)
     {
