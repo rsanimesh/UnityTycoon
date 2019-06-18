@@ -10,13 +10,13 @@ public class gamemanager : MonoBehaviour
     public static event UpdateBalance OnUpdateBalance;
 
     public static gamemanager instance;
-    float CurrentBalance; 
+    float CurrentBalance = 0;
+    public string CompanyName;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentBalance = 1000; // Initial balance credited to player
         // check if anyone has suscribed to our event
         if (OnUpdateBalance != null)
             OnUpdateBalance(); // if yes raise event  that current balance is changed
@@ -56,4 +56,5 @@ public class gamemanager : MonoBehaviour
     {
         return CurrentBalance;
     }
+
 }

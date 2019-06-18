@@ -19,11 +19,13 @@ public class UIStore : MonoBehaviour
         // and you attach that event to a function to take an action
         // parameters and return type of event and function need to be same
         gamemanager.OnUpdateBalance += UpdateUI;
+        LoadGameData.OnLoadDataComplete += UpdateUI;
     }
 
     void OnDisable()
     {
         gamemanager.OnUpdateBalance -= UpdateUI;
+        LoadGameData.OnLoadDataComplete -= UpdateUI;
     }
 
     void Awake()

@@ -1,14 +1,26 @@
 <gamedata>
+  <CompanyName>AIEngineer</CompanyName>
+  <StartingBalance>1999</StartingBalance>
 <store>
   <name>Hotel</name>
-  <BaseStoreCost>1.5</BaseStoreCost>
-  <BaseStoreProfit>0.5</BaseStoreProfit>
+  <BaseStoreCost>1000</BaseStoreCost>
+  <BaseStoreProfit>250</BaseStoreProfit>
   <StoreTimer>5</StoreTimer>
+  <image>icon_topic_cooking</image>
+  <StoreMultiplier>1.1</StoreMultiplier>
+  <StoreTimerDivision>5</StoreTimerDivision>
+  <StoreCount>0</StoreCount>
+  <ManagerCost>400</ManagerCost>
 </store>
   <store>
     <name>Super Market</name>
-    <BaseStoreCost>5</BaseStoreCost>
-    <BaseStoreProfit>2</BaseStoreProfit>
-    <StoreTimer>12</StoreTimer>
+    <BaseStoreCost>2000</BaseStoreCost>
+    <BaseStoreProfit>400</BaseStoreProfit>
+    <StoreTimer>10</StoreTimer>
+    <image>icon_topic_sports</image>
+    <StoreMultiplier>1.2</StoreMultiplier>
+    <StoreTimerDivision>10</StoreTimerDivision>
+    <StoreCount>0</StoreCount>
+    <ManagerCost>700</ManagerCost>
   </store>
 </gamedata>

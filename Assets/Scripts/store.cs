@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class store : MonoBehaviour
 {
     // public variables - Define Gameplay
+    public string StoreName;
     public float BaseStoreCost; // Starting cost for the store
     public float BaseStoreProfit; // Starting profit that store will give after one run 
     public float StoreTimer = 4f; // Time store will take to run for creating profit
@@ -17,12 +18,13 @@ public class store : MonoBehaviour
     float NextStoreCost; // Updated value of store cost, calculated using BaseStoreCost, StoreMultiplier, StoreCount
     float CurrentTimer = 0;
     public bool StartTimer; // To start running the store
+    public float ManagerCost;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        NextStoreCost = BaseStoreCost;
+        //NextStoreCost = BaseStoreCost;
         StartTimer = false;
     }
 
@@ -64,7 +66,12 @@ public class store : MonoBehaviour
         if (!StartTimer && StoreCount > 0)
             StartTimer = true;
     }
-    
+
+    public void SetNextStoreCost(float amt)
+    {
+        NextStoreCost = amt;
+    }
+
     public float GetCurrentTimer()
     {
         return CurrentTimer;
