@@ -405,14 +405,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7998fdf13628bab499ff996308dc3902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StoreName: 
   BaseStoreCost: 1.5
   BaseStoreProfit: 0.5
+  StoreTimer: 4
   StoreCount: 0
-  ManagerUnlock: 1
+  ManagerUnlock: 0
   StoreMultiplier: 1.1
   StoreUnlocked: 0
   StoreTimerDivision: 20
   StartTimer: 0
+  ManagerCost: 0
+  UnlockManagerButton: {fileID: 0}
 --- !u!225 &5242323032262895237
 CanvasGroup:
   m_ObjectHideFlags: 0

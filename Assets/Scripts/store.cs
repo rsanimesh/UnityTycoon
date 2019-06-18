@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class store : MonoBehaviour
 {
+
     // public variables - Define Gameplay
     public string StoreName;
     public float BaseStoreCost; // Starting cost for the store
     public float BaseStoreProfit; // Starting profit that store will give after one run 
     public float StoreTimer = 4f; // Time store will take to run for creating profit
     public int StoreCount=0; // No of stores bought
-    public bool ManagerUnlock=true; // If true: Automatically restart the store, flase: Run store whenever clicked
+    public bool ManagerUnlock; // If true: Automatically restart the store, flase: Run store whenever clicked
     public float StoreMultiplier; // Fraction by which store price will increase every time
     public bool StoreUnlocked=false; // If true: Store is visible to player else not
     public int StoreTimerDivision = 20; // Reduce store timer by half when store count is multiple of 
@@ -19,8 +20,7 @@ public class store : MonoBehaviour
     float CurrentTimer = 0;
     public bool StartTimer; // To start running the store
     public float ManagerCost;
-    public Button UnlockManagerButton;
-    public bool ManagerUnlocked;
+    
 
 
     // Start is called before the first frame update
@@ -71,10 +71,14 @@ public class store : MonoBehaviour
 
     public void UnlockManager()
     {
-        if (ManagerUnlocked)
+        if (ManagerUnlock)
             return;
-        gamemanager.instance.AddToBalance(-ManagerCost);
-        ManagerUnlocked = true;
+        if (gamemanager.instance.CanBuy(ManagerCost))
+        {
+            ManagerUnlock = true;
+            this.transform.GetComponent<UIStore>().ManagerUnlocked();
+            gamemanager.instance.AddToBalance(-ManagerCost);
+        }
     }
 
     public void SetNextStoreCost(float amt)

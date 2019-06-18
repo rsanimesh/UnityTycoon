@@ -112,15 +112,28 @@ public class LoadGameData : MonoBehaviour
 
     void CreateManager(XmlNode StoreNode, store storeobj)
     {
+        // Created New Manger from Manager Prefab
         GameObject NewManager = (GameObject)Instantiate(ManagerPrefab);
+
+        // Update name of Manager to Store Name
         Text ManagerNameText = NewManager.transform.Find("ManagerNameText").GetComponent<Text>();
         ManagerNameText.text = storeobj.StoreName;
 
+        // Update Manager Cost from XML to Store Object
         storeobj.ManagerCost = float.Parse(StoreNode.InnerText);
+
+        // Get Manager Button Component and link with UIStore Object
         Button ManagerButton = NewManager.transform.Find("UnlockManagerButton").GetComponent<Button>();
+        UIStore UIManager = storeobj.GetComponent<UIStore>();
+        UIManager.ManagerButton = ManagerButton;
+
+        // Uppdate Text in Manager Button with Manager Cost
         Text ManagerButtonText = ManagerButton.transform.Find("UnlockManagerButtonText").GetComponent<Text>();
         ManagerButtonText.text = "Unlock " + storeobj.ManagerCost.ToString("C2");
-        storeobj.UnlockManagerButton = ManagerButton;
+
+        // Add listner to Manager Button
+        ManagerButton.onClick.AddListener(storeobj.UnlockManager);
+
         NewManager.transform.SetParent(ManagerPanel.transform);
 
         

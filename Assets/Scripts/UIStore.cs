@@ -11,6 +11,7 @@ public class UIStore : MonoBehaviour
     public Button BuyButton;
 
     public store Store;
+    public Button ManagerButton;
 
     // On Enable it suscribe to event form gamemanager
     void OnEnable()
@@ -71,10 +72,10 @@ public class UIStore : MonoBehaviour
         BuyButtonText.text = "Buy " + Store.GetNextStoreCost().ToString("C2");
 
         // Update manager button if you can afford the store
-        if (gamemanager.instance.CanBuy(Store.ManagerCost))
-            Store.UnlockManagerButton.interactable = true;
+        if (!Store.ManagerUnlock && gamemanager.instance.CanBuy(Store.ManagerCost))
+            ManagerButton.interactable = true;
         else
-            Store.UnlockManagerButton.interactable = false;
+            ManagerButton.interactable = false;
 
     }
 
@@ -91,4 +92,9 @@ public class UIStore : MonoBehaviour
         Store.OnStartTimer();
     }
 
+    public void ManagerUnlocked()
+    {
+        Text ManagerButtonText = ManagerButton.transform.Find("UnlockManagerButtonText").GetComponent<Text>();
+        ManagerButtonText.text = "PURCHASED";
+    }
 }
